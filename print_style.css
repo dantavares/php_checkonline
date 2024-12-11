@@ -1,0 +1,22 @@
+* {
+    background:transparent !important;
+    color:#000 !important;
+    text-shadow:none !important;
+    filter:none !important;
+    -ms-filter:none !important;
+}
+
+body {
+    margin:0;
+    padding:0;
+    font-size: 9px;
+}
+
+a                                       { color: #0074d9; }
+table, th, td                           { padding: 3px; }
+table                                   { border-collapse: collapse; }
+#printbt                                { display: none; }
+#lm td                                  { padding: 3px; border: 1px solid black; }
+#lm th                                  { padding: 5px; border: 1px solid black; }
+#lm table.lm_grid                       { margin-bottom: 11px; }
+#lm table.lm_grid tr:nth-child(even)    { background: #eee; }
