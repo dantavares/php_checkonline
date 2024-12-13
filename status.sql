@@ -114,7 +114,7 @@ CREATE TABLE `users` (
   `passkey` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `isadmin` tinyint(4) DEFAULT NULL,
-  `p_list` text DEFAULT NULL
+  `p_list` text DEFAULT '[0]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --

@@ -2,6 +2,7 @@
 <html><head>
 <title>Censo</title>
 <meta charset='UTF-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel='stylesheet' type='text/css' href='ed_style.css' />
 <meta name='robots' content='noindex,nofollow'>

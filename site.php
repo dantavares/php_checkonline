@@ -142,7 +142,7 @@
 		$db->connect();
 		
 		foreach ($plist as $i) {
-			if ($i) { 
+			if ($i && !$_SESSION['user']['isadmin']) { 
 				$res = $db->query_params('SELECT name FROM tables WHERE id = :ID', array('ID'=>$plist[$i]));
 				$row = $res->fetch();
 				if ( $row['name'] == $pgname )  { $isnauth = 0; }
@@ -150,7 +150,7 @@
 			}
 		}
 		
-		if (($_SESSION['user']['isadmin']) == '1') {
+		if ($_SESSION['user']['isadmin']) {
 			$isnauth = 0;
 			
 			$res = $db->query_params('SELECT name FROM tables');
@@ -167,6 +167,13 @@
 		}
 		
 		echo ' | <a href="login.php?exit">Sair</a><br/></h4>';
+		
+		if ($plist == '' && !($_SESSION['user']['isadmin'])) {
+			$res = $db->query_params('SELECT email FROM users WHERE user_id = 1');
+			$row = $res->fetch();
+			echo ('<BR><center> <h2>Aguarde o Administrador te conceder os acessos necessários<BR><BR>');
+			echo ("Em caso de dúvidas envie um email para: <a href='mailto:".$row['email']."'>".$row['email'].'</h2></center>');
+		}
 		
 		$db->close;
 		
@@ -200,7 +207,7 @@
 		<?php
 		}
 		
-		function site_footer($color=true) {
+	function site_footer($color=true) {
 		?>
 	</body>
 	<footer>
