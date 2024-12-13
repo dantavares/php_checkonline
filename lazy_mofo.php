@@ -972,13 +972,12 @@ class lazy_mofo{
 
         if(mb_strlen($success) > 0) {
             #$html .= "<div class='lm_success'><b>$success</b></div>\n"; #Original Code
-            $html .= "<div class='alert info' id='printbt'>\n";
-            $html .= "<span class='closebtn'>&times;</span>\n";
-            $html .= "<center>$success</center></div>\n";
+            $html .= "<script> alertify.notify('$success', 'success', 3); </script>\n";
         }
         
         if(mb_strlen($error) > 0)
-            $html .= "<div class='lm_error'><b>$error</b></div>\n";
+            #$html .= "<div class='lm_error'><b>$error</b></div>\n"; #Original Code
+			$html .= "<script> alertify.notify('$error', 'error', 3); </script>\n";
         
         $html .= $add_record_search_bar;
 

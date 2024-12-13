@@ -47,8 +47,9 @@ a { color: #0074d9; }
 #lm div.lm_success, #lm div.lm_error { color: #2ecc40; border: 1px solid #2ecc40; border-radius: 3px; padding: 10px; margin: 10px auto; width: 50%; text-align: center; }
 #lm div.lm_error                     { color: #ff4136; border-color: #ff4136;  }
 
-/* Msg Atualiza Enfermeiro e Médico */
+/* Msg Atualiza Enfermeiro e Médico 
 .alert { padding: 10px; background-color: #ff4136; color: white; opacity: 1; transition: opacity 0.6s; margin-bottom: 15px; }
 .alert.info {background-color: #2196F3;}
 .closebtn { margin-left: 15px; color: white; font-weight: bold; float: right; font-size: 22px; line-height: 20px; cursor: pointer; transition: 0.3s; }
 .closebtn:hover { color: black; }
+*/

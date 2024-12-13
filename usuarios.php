@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel='stylesheet' type='text/css' href='ed_style.css' />
+<link rel="stylesheet" type='text/css' href="alertify.css" />
+<script src="alertify.js"></script>
 <meta name='robots' content='noindex,nofollow'>
 </head><body font-size="10px">
 
