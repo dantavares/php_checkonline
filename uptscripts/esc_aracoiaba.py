@@ -21,6 +21,8 @@ sql.execute(f"select name from tables where id = {id}")
 result = sql.fetchall()
 t_name = result[0][0]
 
+print (t_name)
+
 sql.execute(f"SELECT * FROM {t_name}")
 result = sql.fetchall()
 
