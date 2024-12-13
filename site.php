@@ -141,15 +141,6 @@
 		
 		$db->connect();
 		
-		foreach ($plist as $i) {
-			if ($i && !$_SESSION['user']['isadmin']) { 
-				$res = $db->query_params('SELECT name FROM tables WHERE id = :ID', array('ID'=>$plist[$i]));
-				$row = $res->fetch();
-				if ( $row['name'] == $pgname )  { $isnauth = 0; }
-				echo (' | <a href="'.$row['name'].'.php">'.ucwords(str_replace('_',' ',$row['name'])).'</a>');
-			}
-		}
-		
 		if ($_SESSION['user']['isadmin']) {
 			$isnauth = 0;
 			
@@ -165,15 +156,30 @@
 			echo ' | ';
 			echo '<a href="cores.php">Cores</a>';
 		}
+		else {
+			if (count($plist) == 1) {
+				$res = $db->query_params('SELECT email FROM users WHERE user_id = 1');
+				$row = $res->fetch();
+				echo ' | <a href="login.php?exit">Sair</a><br/></h4>';
+				echo '<BR><center> <h2>Aguarde o Administrador te conceder os acessos necessários<BR><BR>';
+				echo "Em caso de dúvidas envie um email para: <a href='mailto:".$row['email']."'>".$row['email'].'</h2></center>';
+				die;
+			}
+			
+			$cnt = count($plist);
+			$res = $db->query_params('SELECT id, name FROM tables');		
+			while($row = $res->fetch()) {
+				for($i=0; $i < $cnt; $i++) {
+					if  ($plist[$i] == $row['id']) { 
+						if ($row['name'] == $pgname) $isnauth = 0;
+						echo (' | <a href="'.$row['name'].'.php">'.ucwords(str_replace('_',' ',$row['name'])).'</a>');
+						break;
+					}
+				}
+			}
+		}
 		
 		echo ' | <a href="login.php?exit">Sair</a><br/></h4>';
-		
-		if ($plist == '' && !($_SESSION['user']['isadmin'])) {
-			$res = $db->query_params('SELECT email FROM users WHERE user_id = 1');
-			$row = $res->fetch();
-			echo ('<BR><center> <h2>Aguarde o Administrador te conceder os acessos necessários<BR><BR>');
-			echo ("Em caso de dúvidas envie um email para: <a href='mailto:".$row['email']."'>".$row['email'].'</h2></center>');
-		}
 		
 		$db->close;
 		
@@ -181,7 +187,6 @@
 			echo ('<BR><center> <h2>Você não está autorizado a acessar esta página!</h2></center>');
 			die;
 		}
-		
 	}
 	
 	function page_header($title,$pgicon) {

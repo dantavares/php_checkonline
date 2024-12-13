@@ -15,11 +15,6 @@ $_SESSION['pgname'] = basename(__FILE__);
 $db->connect();
 site_header(); 
 
-if (!($_SESSION['user']['isadmin'])) {
-    printf('Para gerenciar usuários, é necessário que você seja administrador');
-    die;
-}
-
 $lm = new lazy_mofo($dbh, 'pt-br'); 
 $lm->table = 'users';
 $lm->identity_name = 'user_id';
@@ -35,26 +30,14 @@ $lm->rename['pg_list'] = 'Lista de páginas';
 $lm->form_input_control['rstpsswd'] = array('type' => 'checkbox');
 $lm->form_input_control['pg_list'] = array("type" => 'pg_list');
 $lm->after_update_user_function = 'after_update';
-$lm->on_update_user_function = 'on_update';
 
-function on_update(){
-	 global $lm;
-}
-
-function pg_list($column_name, $value, $command, $called_from){
-	
-    // $column_name: field name
-    // $value: field value  
-    // $command: array defined in the control, or string with legacy syntax; rarely needed
-    // $called_from: origin of call; 'form', or 'grid'; rarely needed
-
+function pg_list(){
     global $lm;
 	global $db;
 	$ret = '';
-	
+		
     $res = $db->query_params("select p_list from users where user_id = " . $_GET[$lm->identity_name]);
 	$row = $res->fetch();
-    		
 	$plist = json_decode($row['p_list']);
 	
 	$res = $db->query_params('SELECT id, name FROM tables');
