@@ -76,7 +76,8 @@ CREATE TABLE `invitations` (
 	`invitation_id` int(10) UNSIGNED NOT NULL,
 	`user_id` int(10) UNSIGNED NOT NULL,
 	`email` varchar(255) NOT NULL,
-	`invitation_key` varchar(255) NOT NULL
+	`invitation_key` varchar(255) NOT NULL,
+	`p_list` text NOT NULL DEFAULT '[0]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- --------------------------------------------------------

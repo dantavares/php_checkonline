@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (strlen($data['email']) > 255 && !$islogged) $errors [] = 'O email é muito longo';
 
     if (empty($errors) && !$islogged) {
-        $res = $db->query_params('SELECT invitation_id, user_id FROM invitations WHERE email = :email AND invitation_key = :invitation_key', array('email' => $data['email'], 'invitation_key' => $data['invitation']));
+        $res = $db->query_params('SELECT invitation_id, user_id, p_list FROM invitations WHERE email = :email AND invitation_key = :invitation_key', array('email' => $data['email'], 'invitation_key' => $data['invitation']));
         if (!($invitation_row = $res->fetch())) {
             $errors []= 'A chave de acesso é inválida, ou não foi gerada para este email';
         }
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         $pw = password_hash($data['password'], PASSWORD_DEFAULT) or die('password error');
         if(!$islogged){
-            $db->query_params('INSERT INTO users (username, password, passkey, email, invited_by) VALUES (:username, :password, :passkey, :email, :invited_by)', array('username' => $data['username'], 'password' => $pw, 'passkey' => random_hash(), 'email' => $data['email'], 'invited_by' => $invitation_row['user_id'])) or die('db error');
+            $db->query_params('INSERT INTO users (username, password, passkey, email, invited_by, p_list) VALUES (:username, :password, :passkey, :email, :invited_by, :p_list)', array('username' => $data['username'], 'password' => $pw, 'passkey' => random_hash(), 'email' => $data['email'], 'invited_by' => $invitation_row['user_id'], 'p_list' => $invitation_row['p_list'])) or die('db error');
             $db->query_params('DELETE FROM invitations WHERE invitation_id = :invitation_id', array('invitation_id' => $invitation_row['invitation_id'])) or die('db error');
             header(sprintf('Location: %s/login.php?success', $CONFIG['base_url']));
             die;

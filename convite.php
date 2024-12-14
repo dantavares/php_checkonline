@@ -1,21 +1,8 @@
 <?php
 require_once 'site.php';
 $db->connect();
-?>
-
-<!DOCTYPE HTML>
-<head>
-<meta charset="utf-8" />
-</head>
-<body>
-
-<?php
 site_header();
-
-if (!require_auth()) {
-    printf('Para gerar / gerenciar convites, é necessário que você seja perfil administrador');
-    die;
-}
+$_SESSION['pgname'] = basename(__FILE__);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     check_csrf();
@@ -34,8 +21,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header(sprintf('Location: %s/convite.php?emailje', $CONFIG['base_url']));
         die;
     }
-    
-    $db->query_params('INSERT INTO invitations (user_id, email, invitation_key) VALUES (:user_id, :email, :invitation_key)', array('user_id' => $_SESSION['user']['user_id'], 'email' => $email, 'invitation_key' => random_hash())) or die('db error');
+	
+	$lst_pg = $_POST['lst_pg'];
+		
+	if (!empty($lst_pg)){
+		$jplist = '[0';
+		
+		$N = count($lst_pg);
+		for($i=0; $i < $N; $i++) {
+			$jplist .= ',' . $lst_pg[$i];
+		}
+		
+		$jplist .= ']';
+		
+	}
+	else {
+		$jplist = '[0]';
+	}
+	
+    $db->query_params('INSERT INTO invitations (user_id, email, invitation_key, p_list) VALUES (:user_id, :email, :invitation_key, :p_list)', 
+						array('user_id' => $_SESSION['user']['user_id'], 'email' => $email, 'invitation_key' => random_hash(), 'p_list'=> $jplist)) or die('db error');
     header(sprintf('Location: %s/convite.php?success', $CONFIG['base_url']));
     die;
 } 
@@ -59,10 +64,19 @@ if (array_key_exists('emailje', $_GET)) {
     $msg = '<h4 align="center" class="red">Este email já está cadastrado!</h4>';
 }
 
-form_header(basename(__FILE__),'Convite - Painel Censo',$msg);
-printf('<input name="email" type="text" placeholder="Email" class="pure-input-1" /><br/>');
-printf('<button type="submit" class="pure-button pure-button-primary">Criar convite</button>');
-printf('</fieldset></form></div>');
+form_header(basename(__FILE__),'Convite',$msg);
+
+printf("Email:\n");
+printf('<input name="email" type="text" placeholder="Email" class="pure-input-1" /><br>'."\n");
+printf("<span>Autorização de Páginas:</span><BR><BR>\n");
+
+$res = $db->query_params("select id, name from tables");
+while($row = $res->fetch()) {
+	echo "<input type='checkbox' name='lst_pg[]' value='".$row['id']."'> ".ucwords(str_replace('_',' ',$row['name']))."</input><BR>\n";
+}
+
+printf('<BR><button type="submit" class="pure-button pure-button-primary">Criar convite</button>'."\n");
+printf('</fieldset></table></form></div>');
 
 $res = $db->query_params('SELECT username, email FROM users WHERE invited_by = :invited_by ORDER BY username', array('invited_by' => $_SESSION['user']['user_id']));
 if ($res) {
