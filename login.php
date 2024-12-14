@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			'p_list' => $row['p_list']
         );
 
-        header('Location: ' . $CONFIG['base_url'] .'/'. $_SESSION['pgname']);
+        header('Location: ' . $CONFIG['base_url'] .'/');
         die;
     }
 }
@@ -57,7 +57,7 @@ if ($error) {
     $msg = '<h4 align="center" class="red">Usuário ou Senha inválido</h4>';
 }
 
-form_header(basename(__FILE__),'Login - Painel Status',$msg);
+form_header(basename(__FILE__),'Login',$msg);
 printf('<input name="username" type="text" placeholder="Usuário" class="pure-input-1" /><br/>');
 printf('<input name="password" type="password" placeholder="Senha" class="pure-input-1" /><br/>');
 printf('<button type="submit" class="pure-button pure-button-primary">Entrar &rarr;</button> ou <a href="registro.php">Cadastrar</a> ');
