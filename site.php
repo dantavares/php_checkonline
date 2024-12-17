@@ -34,7 +34,7 @@
 	function form_numero($column_name, $value, $command, $called_from) {
 		global $lm;
 		$val = $lm->clean_out($value);
-		return "<input type='text' name='$column_name' value='$val' size='10' title='Apenas número inteiro maior que zero' pattern='^[1-9]\d*$'>";
+		return "<input type='text' name='$column_name' value='$val' size='10' title='Apenas número inteiro' pattern='^[0-9]\d*$'>";
 	}
 	
 	function form_data($column_name, $value, $command, $called_from) {
