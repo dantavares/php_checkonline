@@ -215,10 +215,7 @@ CREATE TABLE `users` (
 --
 -- Despejando dados para a tabela `users`
 --
-
-INSERT INTO `users` (`user_id`, `invited_by`, `username`, `password`, `passkey`, `email`, `isadmin`, `p_list`) VALUES
-(1, 0, 'ADMIN', '$2y$10$tTe6Wcg2qwASg8K5qbIaHetHwKbJ4ap3zUQLNMNq9UcqnX4eRuio6', 'bef8c54cdb8106aef6a0de65fdab6425', 'dantavares@gmail.com', 1, NULL),
-(2, 1, 'DANIEL', '$2y$10$OrudEAkgixSw/hFpoG7dteN74BFvjhwNfDnMZx29U35VUoQJRWsXC', 'd3a2207040fe7fec39cd2de2c23b6707', 'daniel@dantavares.tec.br', NULL, '[0,1,4,5]');
+INSERT INTO `users` VALUES (1,0,'admin','$2y$10$LINYtve1F9dD9ROUcvHBtOvvwzAyIaKIgGOFV3WJq20xeQYVWl98u','076c838bd016b22bd1cf0315b952433c','dantavares@gmail.com',1);
 
 --
 -- Índices para tabelas despejadas
