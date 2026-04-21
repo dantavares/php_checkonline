@@ -1,5 +1,5 @@
 {
-"host":"status_db",
+"host":"127.0.0.1",
 "dbname":"status",
 "user":"status",
 "password":"zaq12wsx"
