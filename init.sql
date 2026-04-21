@@ -215,7 +215,7 @@ CREATE TABLE `users` (
 --
 -- Despejando dados para a tabela `users`
 --
-INSERT INTO `users` VALUES (1,0,'admin','$2y$10$LINYtve1F9dD9ROUcvHBtOvvwzAyIaKIgGOFV3WJq20xeQYVWl98u','076c838bd016b22bd1cf0315b952433c','dantavares@gmail.com',1);
+INSERT INTO `users` VALUES (1,0,'admin','$2y$10$JjDuoGbdvG8cy1wpG6BSAOR1sHEo8QwvOI5BfqejwyKovOI1WGZTy','9ce607b6aebbd5c38c78b38e9135ac50','dantavares@gmail.com',1, NULL);
 
 --
 -- Índices para tabelas despejadas
