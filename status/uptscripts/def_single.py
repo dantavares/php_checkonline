@@ -1,10 +1,10 @@
 #!/usr/bin/python3 -u
-import subprocess, mysql.connector, json
+import subprocess, mysql.connector, json, sys
 
 with open('db_config.json', 'r') as file: config = json.load(file)
 
 # Tables ID for this update
-id = 3
+id = sys.argv[1]
 
 db = mysql.connector.connect(
   host = config['host'],
@@ -43,7 +43,7 @@ for row in result:
     else:
         st_nvr = "OffLine"
 
-    print (f"ID: {row[0]} - NVR: {st_nvr}")
+    print (f"ID: {row[0]} - Status: {st_nvr}")
     sql.execute(f"UPDATE {t_name} SET status = '{st_nvr}' WHERE id = {row[0]}")
     db.commit()
 

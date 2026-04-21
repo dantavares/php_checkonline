@@ -24,12 +24,15 @@
 		*    Nao altere nada abaixo desta linha se nao souber o que esta fazendo! *
 	***************************************************************************/
 	$db = $CONFIG['db']['type'] === 'mysql' ? new MySqlDatabase() : new PostgreSqlDatabase();
-	
+
 	try {
-		$dbh = new PDO("mysql:host=$db_host;dbname=$db_name;", $db_user, $db_passwd);
-		} catch (PDOException $e) {
+		$db->connect();
+	} catch (PDOException $e) {
 		die('Erro de conexao com banco de dados: ' . $e->getMessage());
 	}
+
+	// Reutiliza a mesma conexão PDO já aberta pelo $db (lazy_mofo usa $dbh)
+	$dbh = $db->conn;
 	
 	function form_numero($column_name, $value, $command, $called_from) {
 		global $lm;
@@ -181,8 +184,6 @@
 		
 		echo ' | <a href="login.php?exit">Sair</a><br/></h4>';
 		
-		$db->close;
-		
 		if ($isnauth) {
 			echo ('<BR><center> <h2>Você não está autorizado a acessar esta página!</h2></center>');
 			die;
@@ -279,7 +280,6 @@
 				<?php
 					if ($color){
 						global $db;
-						$db->connect();
 						$res = $db->query_params("SELECT * from colors") or die('db error');
 						while ($row = $res->fetch()) {
 							printf("if(value.match(/%s/)) tbody.childNodes[i].childNodes[j].setAttribute('style','background-color: %s');\n", $row['exp'], $row['rgb']);

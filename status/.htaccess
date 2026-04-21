@@ -1,0 +1,3 @@
+<FilesMatch "\.(json|sh|py|sql)$">
+    Require all denied
+</FilesMatch>
