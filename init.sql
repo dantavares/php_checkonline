@@ -40,23 +40,6 @@ CREATE TABLE `cmv_barueri` (
   `status` varchar(20) NOT NULL DEFAULT '?'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `cmv_barueri`
---
-
-INSERT INTO `cmv_barueri` (`id`, `ip_pub`, `nvr_p`, `nvr_http_p`, `unidade`, `provedor`, `ip_loc`, `n_cam`, `status`) VALUES
-(1, 'nvr13.cv-barueri.dns.army', 8000, 80, 'NVR 13', 'America NET', '172.16.10.13', 6, 'OffLine'),
-(2, 'nvr14.cv-barueri.dns.army', 8000, 80, 'NVR 14', 'America NET', '172.16.10.14', 16, 'OffLine'),
-(3, 'nvr15.cv-barueri.dns.army', 8000, 80, 'NVR 15', 'America NET', '172.16.10.15', 16, 'OffLine'),
-(4, 'nvr16.cv-barueri.dns.army', 8000, 80, 'NVR 16', 'America NET', '172.16.10.16', 16, 'OffLine'),
-(5, 'nvr17.cv-barueri.dns.army', 8000, 80, 'NVR 17', 'America NET', '172.16.10.17', 15, 'OffLine'),
-(6, 'nvr18.cv-barueri.dns.army', 8000, 80, 'NVR 18', 'America NET', '172.16.10.18', 14, 'OffLine'),
-(7, 'nvr19.cv-barueri.dns.army', 8000, 80, 'NVR 19', 'America NET', '172.16.10.19', 8, 'OffLine'),
-(8, 'nvr20.cv-barueri.dns.army', 8000, 80, 'NVR 20', 'America NET', '172.16.11.1', 32, 'OffLine'),
-(9, 'nvr21.cv-barueri.dns.army', 8000, 80, 'NVR 21', 'America NET', '172.16.12.1', 5, 'OffLine'),
-(10, 'nvr.casabranca.dns.army', 8000, 80, 'Casa Branca', 'NUVYON', '192.168.3.101', 15, 'OffLine');
-
--- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `colors`
@@ -98,15 +81,6 @@ CREATE TABLE `diversos` (
 -- Despejando dados para a tabela `diversos`
 --
 
-INSERT INTO `diversos` (`id`, `ip_pub`, `nvr_p`, `nvr_http_p`, `unidade`, `provedor`, `ip_loc`, `n_cam`, `status`) VALUES
-(1, 'hch07kpbqt8.sn.mynetname.net', 8291, 80, 'Global Midia', 'Joy', NULL, 0, 'OffLine'),
-(2, 'hcs080skpm4.sn.mynetname.net', 8291, 80, 'UBS1', 'ARFIBER', NULL, 0, 'OffLine'),
-(3, 'hcr088wjx6g.sn.mynetname.net', 8291, 80, 'UBS Alcides', 'ARFIBER', NULL, 0, 'OnLine'),
-(4, 'hcs089j2h9d.sn.mynetname.net', 8291, 80, 'UBS Alcides 2', 'ARFIBER', NULL, 0, 'OnLine'),
-(5, 'nvr.casabranca.dns.army', 8000, 80, 'Casa Branca', 'NUVYON', NULL, 0, 'OffLine');
-
--- --------------------------------------------------------
-
 --
 -- Estrutura para tabela `esc_aracoiaba`
 --
@@ -125,41 +99,6 @@ CREATE TABLE `esc_aracoiaba` (
   `status_al` varchar(10) NOT NULL DEFAULT '?'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `esc_aracoiaba`
---
-
-INSERT INTO `esc_aracoiaba` (`id`, `ip_pub`, `nvr_p`, `alm_p`, `unidade`, `provedor`, `ip_loc`, `nvr_http_p`, `n_cam`, `status_nvr`, `status_al`) VALUES
-(1, '45.169.136.142', 8000, 8002, 'Albino Mariano Rodrigues', 'MegaNet', '192.168.0.138', 8001, 10, 'OnLine', 'OnLine'),
-(2, '201.55.198.105', 8000, 8002, 'Alcebíades Leonel Machado', 'IP NET', '192.168.0.111', 8001, 11, 'OnLine', 'OnLine'),
-(3, '45.180.80.156', 8000, 8002, 'Alfredo Emiliano Lourenço', 'AR Fiber', '192.168.0.114', 8001, 8, 'OnLine', 'OnLine'),
-(4, '45.180.80.175', 8000, 8002, 'Antônio Caetano Leite', 'AR Fiber', '192.168.1.114', 8001, 16, 'OnLine', 'OnLine'),
-(5, '45.180.80.172', 8000, 8002, 'Antônio Euzébio Gonçalves', 'AR Fiber', '192.168.1.114', 8001, 8, 'OnLine', 'OnLine'),
-(6, '45.180.80.210', 8000, 8002, 'Aurea Duarte Rocha', 'AR Fiber', '192.168.0.179', 8001, 11, 'OnLine', 'OnLine'),
-(7, '45.191.152.87', 8000, 8002, 'Benedito Delfino', 'Alginet', '192.168.1.104', 8001, 11, 'OnLine', 'OnLine'),
-(8, '45.180.80.221', 8000, 8002, 'Benedito Antunes da Cruz (Barreiro)', 'AR Fiber', '192.168.1.200', 8001, 8, 'OnLine', 'OnLine'),
-(9, '45.180.80.215', 8000, 8002, 'Cel. Antônio Rodrigues de Miranda', 'AR Fiber', '192.168.0.200', 8001, 8, 'OnLine', 'OnLine'),
-(10, '45.180.80.209', 8000, 8002, 'Célia Miguel Nottolini', 'AR Fiber', '192.168.0.102', 8001, 12, 'OnLine', 'OnLine'),
-(11, '45.180.80.188', 8000, 8002, 'Creusa Maria Cardoso Roldan (Centro ED.)', 'AR Fiber', '192.168.1.114', 8001, 8, 'OnLine', 'OnLine'),
-(12, '45.191.152.65', 8000, 8002, 'Celso Charuri', 'Alginet', '192.168.0.186', 8001, 12, 'OnLine', 'OnLine'),
-(13, '201.55.198.134', 8000, 8002, 'Eliane Aparecida Plens Cavalheiros', 'IP NET', '192.168.0.122', 8001, 12, 'OnLine', 'OnLine'),
-(14, '45.180.80.202', 8000, 8002, 'Prof. Helena Rodrigues', 'AR Fiber', '192.168.1.104', 8001, 10, 'OnLine', 'OnLine'),
-(15, '201.55.198.152', 8000, 8002, 'Honório Carriel Cleto', 'IP NET', '192.168.0.177', 8001, 10, 'OnLine', 'OnLine'),
-(16, '45.180.80.212', 8000, 8002, 'Ligia de Paula Alvares', 'AR Fiber', '192.168.1.199', 8001, 10, 'OnLine', 'OnLine'),
-(17, '45.180.80.165', 8000, 8002, 'Maria Coutinho Florenzano', 'AR Fiber', '192.168.1.112', 8001, 10, 'OnLine', 'OnLine'),
-(18, '45.191.152.148', 8000, 8002, 'Maria de Souza Cruz', 'Alginet', '192.168.0.132', 8001, 12, 'OnLine', 'OnLine'),
-(19, '45.180.80.208', 8000, 8002, 'Maria Mizue Nagaishi Florenzano', 'AR Fiber', '192.168.1.200', 8001, 16, 'OnLine', 'OnLine'),
-(20, '45.180.80.201', 8000, 8002, 'Maria Silvia Florenzano', 'AR Fiber', '192.168.0.111', 8001, 16, 'OnLine', 'OnLine'),
-(21, '45.180.80.213', 8000, 8002, 'Marisa Mascarenhas', 'AR Fiber', '192.168.0.103', 8001, 10, 'OnLine', 'OnLine'),
-(22, '45.180.80.211', 8000, 8002, 'Pedro Ferreira Duarte Neto', 'AR Fiber', '192.168.0.102', 8001, 12, 'OnLine', 'OnLine'),
-(23, '201.55.198.154', 8000, 8002, 'Rita Machado', 'IP NET', '192.168.0.171', 8001, 7, 'OnLine', 'OnLine'),
-(24, '45.191.152.91', 8000, 8002, 'São Conrado (Roldan)', 'Alginet', '192.168.1.105', 8001, 16, 'OnLine', 'OnLine'),
-(25, '45.180.80.220', 8084, 8284, 'Prof. Osmar Giacomelli', 'AR Fiber', '192.168.1.200', 84, 15, 'OnLine', 'OnLine'),
-(26, '45.180.80.220', 8083, 8283, 'Secretaria de educação', 'AR Fiber', '192.168.1.201', 83, 4, 'OnLine', 'OnLine'),
-(27, '45.180.80.222', 8085, 8002, 'Barracão da Secretaria', 'AR Fiber', '192.168.1.202', 85, 7, 'OnLine', 'OnLine'),
-(28, '45.180.80.214', 84, 84, 'Guarda Municipal', 'AR Fiber', '192.168.10.100', 84, 1, 'OnLine', 'OnLine');
-
--- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `invitations`
@@ -264,10 +203,6 @@ ALTER TABLE `tables`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT para tabelas despejadas
---
 
 --
 -- AUTO_INCREMENT de tabela `cmv_barueri`
